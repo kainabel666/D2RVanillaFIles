@@ -1,8 +1,0 @@
-{
-    // Base (parent) profile.
-    "basedOn": "ControllerHD",
-
-    "XMediumFontSize": 30,
-    "MediumFontSize": 28,
-    "SmallFontSize": 26,
-}
