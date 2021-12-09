@@ -13,4 +13,4 @@ Data\HD\Missiles\Missiles.json
 Data\HD\Character\Monsters.json
 Data\HD\Items\Items.json
 Data\HD\Items\Uniques.json
-Data\HD\Items\Sets.json
+Data\HD\Items\Sets.json 
