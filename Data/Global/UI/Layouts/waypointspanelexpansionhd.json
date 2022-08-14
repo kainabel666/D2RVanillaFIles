@@ -1,5 +1,5 @@
 {
-    "basedOn": "WaypointsPanelOriginalHD.json",
+    "basedOn": "Controller/WaypointsPanelOriginalHD.json",
     "type": "WaypointsPanel", "name": "WaypointsPanelExpansion",
     "children": [
         {
@@ -9,20 +9,13 @@
             "type": "ImageWidget", "name": "Background",
         },
         {
-            "type": "ImageWidget", "name": "LeftHinge",
-        },
-        {
-            "type": "TextBoxWidget", "name": "WaypointsTitle",
-        },
-        {
             "type": "TabBarWidget", "name": "Tabs",
             "fields": {
+                "filename": "Controller/Panel/Waypoints/V2/WaypointsTab",
+                "tabSize": { "x": 315, "y": 121 },
                 "tabCount": 5,
-                "filename": "PANEL\\Waypoints\\Waypoints_Tab",
                 "inactiveFrames": [ 1, 1, 1, 1, 1 ],
                 "activeFrames": [ 0, 0, 0, 0, 0 ],
-                "tabSize": { "x": 174, "y": 70 },
-                "tabPadding": { "x": -1, "y": 0 },
             }
         },
         // waypoint button templates
@@ -41,7 +34,7 @@
             ]
         },
         {
-            "type": "ButtonWidget", "name": "CloseButton",
+            "type": "ImageWidget", "name": "Overlay",
         },
     ]
 }
