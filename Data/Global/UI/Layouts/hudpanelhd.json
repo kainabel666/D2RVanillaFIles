@@ -309,7 +309,6 @@
                 "rect": { "x": 1591, "y": 263, },
                 "cellPadding": { "x": 32, "y": 15 },
                 "controllerDefaultItemTransparency": 0.5,
-                "controllerColumnDefaultItems": [ "healthPotion", "manaPotion", "rejuvinationPotion", "townPortalScroll" ],
                 "focusOnMouseOver": false,
             },
             "children": [
