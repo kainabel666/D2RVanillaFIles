@@ -19,8 +19,13 @@
         {
             "type": "TextBoxWidget", "name": "gold_max",
             "fields": {
-                "rect": { "x": 458, "y": 1328, "width": 393, "height": 50 },
-                "style": "$StyleButtonLegend",
+                "rect": { "x": 458, "y": 1336, "width": 393, "height": 50 },
+                "style": {
+                    "fontColor": "$FontColorLightGray",
+                    "pointSize": "$SmallFontSize",
+                    "spacing": "$ReducedSpacing",
+                    "alignment": { "v": "center", "h": "center" }
+                }
             },
         },
         {

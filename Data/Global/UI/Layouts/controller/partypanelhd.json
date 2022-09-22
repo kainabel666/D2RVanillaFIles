@@ -64,6 +64,14 @@
             ]
         },
         {
+            "type": "ButtonWidget", "name": "ShowHidePasswordButton",
+            "fields": { 
+                "rect": {"x": 1300, "y": 65 },
+                "focusIndicatorFilename": "Controller/HoverImages/CheckBox_Hover",
+
+            },
+        },
+        {
             "type": "ListWidget", "name": "ListContainer",
             "fields": {
                 "rect": { "x": 19, "y": 251, "width": 1752, "height": 1363 },

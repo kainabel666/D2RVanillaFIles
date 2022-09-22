@@ -102,7 +102,11 @@
                 {
                     "type": "ListWidgetFocusRedirector", "name": "FriendListRedirector",
                     "fields": {
-                        "listWidget": "FriendsList"
+                        "listWidget": "FriendsList",
+                        "navigation": {
+                            "up": { "name": "OnlineStatus" },
+                            "down": { "name": "AddFriends" }
+                        }
                     },
                     "children": [
                         {

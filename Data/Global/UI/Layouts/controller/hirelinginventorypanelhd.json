@@ -199,15 +199,45 @@
             }
         },
         {
-            "type": "TextBoxWidget", "name": "DamageStat",
+            "type": "Widget", "name": "Damage",
             "fields": {
                 "rect": { "x": 361, "y": 1183, "width": 270, "height": 65 },
-                "style": {
-                    "fontColor": { "r": 255, "g": 255, "b": 255, "a": 255 },
-                    "pointSize": "$MediumFontSize",
-                    "alignment": { "h": "center", "v": "center" }
+            },
+            "children": [
+                {
+                    "type": "TextBoxWidget", "name": "DamageStat",
+                    "fields": {
+                        "rect": { "x": 0, "y": 0, "width": 270, "height": 65 },
+                        "style": {
+                            "fontColor": { "r": 255, "g": 255, "b": 255, "a": 255 },
+                            "pointSize": "$MediumFontSize",
+                            "alignment": { "h": "center", "v": "center" }
+                        },
+                    }
                 },
-            }
+                {
+                    "type": "TextBoxWidget", "name": "DamageStatTop",
+                    "fields": {
+                        "rect": { "x": 0, "y": -5, "width": 270, "height": 65 },
+                        "style": {
+                            "fontColor": { "r": 255, "g": 255, "b": 255, "a": 255 },
+                            "pointSize": "$SmallFontSize",
+                            "alignment": { "h": "center", "v": "top" }
+                        },
+                    }
+                },
+                {
+                    "type": "TextBoxWidget", "name": "DamageStatBottom",
+                    "fields": {
+                        "rect": { "x": 0, "y": -5, "width": 270, "height": 65 },
+                        "style": {
+                            "fontColor": { "r": 255, "g": 255, "b": 255, "a": 255 },
+                            "pointSize": "$SmallFontSize",
+                            "alignment": { "h": "center", "v": "bottom" }
+                        },
+                    }
+                },
+            ]
         },
         {
             "type": "TextBoxWidget", "name": "ArmorClassTitle",

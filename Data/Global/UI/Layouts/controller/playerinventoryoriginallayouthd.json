@@ -192,7 +192,6 @@
                 "cellPadding": { "x": 31, "y": 15 },
                 "cellSize": "$ItemCellSize",
                 "controllerDefaultItemTransparency": 0.0,
-                "controllerColumnDefaultItems": [ "healthPotion", "manaPotion", "rejuvinationPotion", "townPortalScroll" ],
             },
             "children": [
                 {

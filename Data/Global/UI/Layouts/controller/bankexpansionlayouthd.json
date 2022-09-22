@@ -15,7 +15,7 @@
         {
             "type": "TextBoxWidget", "name": "gold_max",
             "fields": {
-                "rect": { "x": 454, "y": 1352, "width": 393, "height": 50 },
+                "rect": { "x": 454, "y": 1362, "width": 393, "height": 50 },
             },
         },
         {
@@ -48,8 +48,8 @@
                 "filename": "Controller/Panel/Stash/V2/StashTabs",
                 "inactiveFrames": [ 1, 1, 1, 1],
                 "activeFrames": [ 0, 0, 0, 0 ],
-                "disabledFrames": [-1, 1, 1, 1],
-                "textStrings": [ "@personal", "@shared", "@shared", "@shared"],
+                "disabledFrames": [ -1, 1, 1, 1 ],
+                "textStrings": [ "@personal", "@shared", "@shared", "@shared" ],
                 "textStyle": { "pointSize": "$MediumFontSize" },
                 "focusIndicatorFilename": "Controller/HoverImages/StashTab_Hover",
                 "focusIndicatorOffset": { "x": 0, "y": -6 },
@@ -63,5 +63,51 @@
                 "focusOnMouseOver": true,
             }
         },
+        {
+            "type": "TabBarWidget", "name": "PreviousLadderSeasonBankTabs",
+            "fields": {
+                "rect": { "x": 109, "y": -1 },
+                "tabCount": 3,
+                "filename": "Controller/Panel/Stash/V2/StashTabs",
+                "inactiveFrames": [ 3, 3, 3 ],
+                "activeFrames": [ 2, 2, 2 ],
+                "disabledFrames": [ 3, 3, 3 ],
+                "textStrings": [ "@shared", "@shared", "@shared"],
+                "textStyle": { "pointSize": "$MediumFontSize" },
+                "focusIndicatorFilename": "Controller/HoverImages/StashTab_Hover",
+                "focusIndicatorOffset": { "x": 0, "y": -6 },
+                "activeTextColor": "$TabsActiveTextColor",
+                "inactiveTextColor": "$TabsInactiveTextColor",
+                "tabSize": { "x": 269, "y": 120 },
+                "tabPadding": "$PanelTabPadding",
+                "onSwitchTabMessage": "BankPanelMessage:SelectTab",
+                "tabLeftIndicatorPosition": "$HalfPanelLeftTabButtonPromptPosition",
+                "tabRightIndicatorPosition": "$HalfPanelRightTabButtonPromptPosition",
+                "focusOnMouseOver": true,
+            }
+        },
+        {
+            "type": "Widget", "name": "PreviousSeasonToggleDisplay",
+            "children": [
+                {
+                    "type": "ToggleButtonWidget", "name": "ShowPreviousLadderSeasonToggle",
+                    "fields": {
+                        "rect": { "x": 1215, "y": 145 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_AdvancedCheckbox",
+                	"focusIndicatorFilename": "Controller/HoverImages/CheckBox_Hover",
+                	"focusIndicatorOffset": { "x": -1, "y": -3 },
+                        "untoggledFrame": 0,
+                        "untoggledPressedFrame": 1,
+                        "untoggledHoveredFrame": 3,
+                        "untoggledDisabledFrame": 2,
+                        "toggledFrame": 4,
+                        "toggledPressedFrame": 5,
+                        "toggledHoveredFrame": 6,
+                        "onClickMessage": "BankPanelMessage:TogglePreviousSeasonTabs",
+                        "tooltipString": "@SharedStashPreviousSeasonToggleTooltip",
+                    }
+                }
+            ]
+        }
     ]
 }
