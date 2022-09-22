@@ -5,6 +5,9 @@
         "rect": "$OptionsPanelRect",
         "anchor": { "x": 0.5 },
         "applySettingsImmediately": false,
+        "vramUsageBarTintColor": [0.98, 0.27, 0.27, 1],
+        "vramUsageBarDefaultTintColor": [1, 1, 1, 0],
+        "vramUsageBarOffset": {"x":10, "y": 9}
     },
     "children": [
         {
@@ -391,6 +394,52 @@
                             ]
                         },
                         {
+                            "type": "TableRowWidget", "name": "Row VRAMUsage",
+                            "children": [
+                                {
+                                    "type": "TextBoxWidget", "name": "VRAMUsageText",
+                                    "fields": {
+                                        "text": "@VRAMUsage",
+                                        "style": "$StyleSettingsText",
+                                    }
+                                },
+                                {
+                                    "type": "FocusableWidget", "name": "VRAMUsage",
+                                    "fields": {
+                                        "rect": { "x": 0, "y": 20, "width": 510, "height": 80 },
+                                        "focusIndicatorFilename": "Controller/HoverImages/Controller_vram_hover",
+										"focusIndicatorOffset": { "x": 3, "y": -8 },
+                                        "fontType": "8ptE",
+                                        "tooltipString": "@VRAMUsageTooltip",
+                                        "tooltipStyle": {
+                                            "fontStyle": {
+                                                "options": { "newlineHandling": "standard" },
+                                            },
+                                            "showAfterDelay": true,
+                                        },
+                                    },
+                                    "children": [
+                                        {
+                                            "type": "ImageWidget", "name": "VRAMUsageImage",
+                                            "fields": {
+                                                "filename": "MENU\\Options_vRAM_bar",
+                                                "useAdvancedColoring": true,
+                                            },
+                                            "children": [
+                                                {
+                                                    "type": "ImageWidget", "name": "VRAMUsageRectangle",
+                                                    "fields": {
+                                                        "filename": "MENU\\Options_vRAM_bar_Fill_gray",
+                                                    },
+                                                },
+                                            ]
+                                        }
+                        
+                                    ]
+                                },
+                            ]
+                        },
+                        {
                             "type": "TableRowWidget", "name": "Row GraphicPresets",
                             "children": [
                                 {
@@ -407,6 +456,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [  "Low", "Medium", "High", "VeryHigh", "Custom" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetGraphicPresets",
                                         "style": "$StyleSettingsCarousel",
@@ -440,6 +490,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [  "Low", "Medium", "High", "VeryHigh" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetTextureQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -473,6 +524,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Anisotropy1", "Anisotropy2", "Anisotropy4", "Anisotropy8", "Anisotropy16" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetTextureAnisotropy",
                                         "style": "$StyleSettingsCarousel",
@@ -506,6 +558,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Off", "Low", "Medium", "High", "VeryHigh" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetAmbientOcclusionQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -539,6 +592,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Low", "Medium", "High", "VeryHigh" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetCharacterDetail",
                                         "style": "$StyleSettingsCarousel",
@@ -572,6 +626,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Low", "Medium", "High", "VeryHigh" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetEnvironmentDetail",
                                         "style": "$StyleSettingsCarousel",
@@ -605,6 +660,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "High", "VeryHigh", "Ultra" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetTransparencyQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -638,6 +694,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Low", "Medium", "High", "VeryHigh" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetShadowQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -671,6 +728,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Off", "FXAA", "SMAA1x", "SMAAT2x" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetAntiAliasing",
                                         "style": "$StyleSettingsCarousel",
@@ -760,6 +818,40 @@
                             ]
                         },
                         {
+                            "type": "TableRowWidget", "name": "Row VfxQuality",
+                            "children": [
+                                {
+                                    "type": "TextBoxWidget", "name": "VfxQualityText",
+                                    "fields": {
+                                        "text": "@VfxQuality",
+                                        "style": "$StyleSettingsText"
+                                    }
+                                },
+                                {
+                                    "type": "CarouselWidget", "name": "VfxQuality",
+                                    "fields": {
+                                        "rect": "$OptionsCarouselRect",
+                                        "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
+                                        "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
+                                        "states": [ "Low", "Medium", "High", "VeryHigh", "Ultra" ],
+                                        "wrapAround": false,
+                                        "fontType": "8ptE",
+                                        "onUpdateMessage": "OptionsPanelMessage:SetVfxQuality",
+                                        "style": "$StyleSettingsCarousel",
+                                        "enabledColor" : "$CarouselEnabledColor",
+                                        "disabledColor" : "$CarouselDisabledColor",
+                                        "tooltipString": "@OptionsMenuVFXQualityTooltip",
+                                        "tooltipStyle": {
+                                            "fontStyle": {
+                                                "options": { "newlineHandling": "standard" },
+                                            },
+                                            "showAfterDelay": true,
+                                        }
+                                    }
+                                },
+                            ]
+                        },
+                        {
                             "type": "TableRowWidget", "name": "Row VfxLightingQuality",
                             "children": [
                                 {
@@ -776,6 +868,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Low", "Medium", "High", "Ultra" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetVfxLightingQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -863,6 +956,7 @@
                                         "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
                                         "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
                                         "states": [ "Low", "Medium", "High" ],
+                                        "wrapAround": false,
                                         "fontType": "8ptE",
                                         "onUpdateMessage": "OptionsPanelMessage:SetLightingQuality",
                                         "style": "$StyleSettingsCarousel",
@@ -980,6 +1074,39 @@
                                             "showAfterDelay": true,
                                         },
                                         "increment": 1,
+                                    }
+                                },
+                            ]
+                        },
+                        {
+                            "type": "TableRowWidget", "name": "Row LegacyGraphicsMode",
+                            "children": [
+                                {
+                                    "type": "TextBoxWidget", "name": "LegacyGraphicsModeText",
+                                    "fields": {
+                                        "text": "@LegacyGraphicsModeLabel",
+                                        "style": "$StyleSettingsText"
+                                    }
+                                },
+                                {
+                                    "type": "CarouselWidget", "name": "LegacyGraphicsMode",
+                                    "fields": {
+                                        "rect": "$OptionsCarouselRect",
+                                        "focusIndicatorPadding": "$OptionsCarouselFocusIndicatorPadding",
+                                        "focusIndicatorFilename": "$OptionsCarouselFocusIndicatorFilename",
+                                        "states": [ "LegacyGraphicsModeGDI", "LegacyGraphicsModeGlide", "KeyBindingTypeResurrected" ],
+                                        "fontType": "8ptE",
+                                        "onUpdateMessage": "OptionsPanelMessage:SetLegacyGraphicsMode",
+                                        "style": "$StyleSettingsCarousel",
+                                        "enabledColor" : "$CarouselEnabledColor",
+                                        "disabledColor" : "$CarouselDisabledColor",
+                                        "tooltipString": "@LegacyGraphicsModeTooltip",
+                                        "tooltipStyle": {
+                                            "fontStyle": {
+                                                "options": { "newlineHandling": "standard" },
+                                            },
+                                            "showAfterDelay": true,
+                                        }
                                     }
                                 },
                             ]

@@ -1,9 +1,12 @@
 {
-    "basedOn": "Controller/QuestLogPanelOriginalHD.json",
+    "basedOn": "QuestLogPanelOriginalHD.json",
     "type": "QuestLogPanel", "name": "QuestLogPanelExpansion",
     "children": [
         {
             "type": "ImageWidget", "name": "Background",
+        },
+        {
+            "type": "ImageWidget", "name": "LeftHinge",
         },
         {
             "type": "ClickCatcherWidget", "name": "ClickCatcher",
@@ -14,9 +17,9 @@
         {
             "type": "TabBarWidget", "name": "Tabs",
             "fields": {
-                "filename": "Controller/Panel/QuestLog/V2/QuestLogtab",
-                "focusIndicatorFilename": "Controller/HoverImages/QuestTab_Hover",
-                "tabSize": { "x": 315, "y": 121 },
+                "filename": "PANEL\\Quest_Log\\QuestLogTab",
+                "tabSize": { "x": 205, "y": 70 },
+                "tabPadding": { "x": -2, "y": 0 },
                 "tabCount": 5,
                 "inactiveFrames": [ 1, 1, 1, 1, 1 ],
                 "activeFrames": [ 0, 0, 0, 0, 0 ],
@@ -112,8 +115,8 @@
                 {
                     "type": "ImageWidget",
                     "fields": {
-                        "rect": { "x": 337, "y": 472 },
-                        "filename": "Controller/Panel/QuestLog/V2/QuestLog_PanelCover"
+                        "rect": { "x": 82, "y": 528 },
+                        "filename": "PANEL\\Quest_Log\\QLPanelCover"
                     },
                 },
             ]
@@ -125,42 +128,42 @@
                     "type": "QuestLogButtonWidget", "name": "Quest21",
                     "fields": {
                         "gridPosition": { "x": 0, "y": 0 },
-                        "filename": "QuestIcons/a5q1",
+                        "filename": "QuestIcons\\a5q1",
                     },
                 },
                 {
                     "type": "QuestLogButtonWidget", "name": "Quest22",
                     "fields": {
                         "gridPosition": { "x": 1, "y": 0 },
-                        "filename": "QuestIcons/a5q2",
+                        "filename": "QuestIcons\\a5q2",
                     },
                 },
                 {
                     "type": "QuestLogButtonWidget", "name": "Quest23",
                     "fields": {
                         "gridPosition": { "x": 2, "y": 0 },
-                        "filename": "QuestIcons/a5q3",
+                        "filename": "QuestIcons\\a5q3",
                     },
                 },
                 {
                     "type": "QuestLogButtonWidget", "name": "Quest24",
                     "fields": {
                         "gridPosition": { "x": 0, "y": 1 },
-                        "filename": "QuestIcons/a5q4",
+                        "filename": "QuestIcons\\a5q4",
                     },
                 },
                 {
                     "type": "QuestLogButtonWidget", "name": "Quest25",
                     "fields": {
                         "gridPosition": { "x": 1, "y": 1 },
-                        "filename": "QuestIcons/a5q5",
+                        "filename": "QuestIcons\\a5q5",
                     },
                 },
                 {
                     "type": "QuestLogButtonWidget", "name": "Quest26",
                     "fields": {
                         "gridPosition": { "x": 2, "y": 1 },
-                        "filename": "QuestIcons/a5q6",
+                        "filename": "QuestIcons\\a5q6",
                     },
                 },
             ]
@@ -172,10 +175,16 @@
             "type": "TextBoxWidget", "name": "LongDescription",
         },
         {
-            "type": "ImageWidget", "name": "TemplateSocket",
+            "type": "ButtonWidget", "name": "Cancel",
+        },
+        {
+            "type": "ButtonWidget", "name": "Speech",
         },
         {
             "type": "ImageWidget", "name": "TemplateGem",
+        },
+        {
+            "type": "ImageWidget", "name": "TemplateSocket",
         },
         {
             "type": "ImageWidget", "name": "TemplateQuestComplete",

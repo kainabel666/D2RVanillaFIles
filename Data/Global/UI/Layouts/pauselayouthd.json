@@ -1,90 +1,162 @@
 {
-    "basedOn": "PauseLayoutHD.json",
     "type": "PausePanel", "name": "PauseLayout",
     "fields": {
-        "anchor": { "x": 0.5 },
-        "rect": "$PauseLayoutRect",
-        "fitToParent": false
+        "priority": 9001,
+        "fitToParent": true,
+        "defaultWidget": "ReturnToGame",
+        "onlineLogoWidgetPosition": { "y": 140 },
     },
     "children": [
         {
-            "type": "ImageWidget", "name": "EscapeOptionsBG",
+            "type": "RectangleWidget", "name": "TransparentBG",
             "fields": {
-                "rect": { "x": 0, "y": 0 },
-                "filename": "Controller/Panel/EscapeMenu/EscapeOptionsBG"
-            }
+                "fitToScreen": true,
+                "color": [ 0.0, 0.0, 0.0, 0.5 ]
+            },
+            "children": [
+                {
+                    "type": "ClickCatcherWidget", "name": "catcher",
+                    "fields": {
+                        "fitToParent": true
+                    }
+                },  
+            ]
         },
         {
-            "type": "ButtonWidget", "name": "MessageLog",
+            "type": "Widget", "name": "LogoWidget",
             "fields": {
-                "rect": { "x": 564, "y": 428},
-                "anchor": { "x": 0.5, "y":0.5 },
-                "filename": "Controller/Panel/EscapeMenu/EscapeOptions_Button",
-                "textString": "@minipanelmessage",
-                "onClickMessage": "PanelManager:OpenPanel:MessageLogPanel",
-                "focusIndicatorFilename": "Controller/HoverImages/EscapeOptionsButton_Hover",
-                "focusIndicatorOffset": { "x": -3, "y": 0 },
-                "pointSize": "$MediumLargeFontSize",
-                "textColor": "$LightButtonTextColor",
-                "text/style": "$StyleFEButtonText",
-                "hoveredFrame": 3,
-                "disabledFrame": 2,
-                "sound": "cursor_select",
-            }
-        },
-        {
-            "type": "ButtonWidget", "name": "Settings",
-            "fields": {
-                "rect": { "x": 564, "y": 578},
-                "anchor": { "x": 0.5, "y":0.5 },
-                "filename": "Controller/Panel/EscapeMenu/EscapeOptions_Button",
-                "onClickMessage": "PanelManager:OpenPanel:SettingsPanel",
-                "focusIndicatorFilename": "Controller/HoverImages/EscapeOptionsButton_Hover",
-                "focusIndicatorOffset": { "x": -3, "y": 0 },
-                "pointSize": "$MediumLargeFontSize",
-                "textString": "@OptionsHD",
-                "pointSize": "$MediumLargeFontSize",
-                "textColor": "$LightButtonTextColor",
-                "text/style": "$StyleFEButtonText",
-                "hoveredFrame": 3,
-                "disabledFrame": 2,
-                "sound": "cursor_select",
-            }
-        },
-        {
-            "type": "ButtonWidget", "name": "Help",
-            "fields": {
-                "rect": { "x": 564, "y": 728 },
                 "anchor": { "x": 0.5 },
-                "filename": "Controller/Panel/EscapeMenu/EscapeOptions_Button",
-                "textString": "@minipanelHelp",
-                "onClickMessage": "PausePanelMessage:OpenHelp",
-                "focusIndicatorFilename": "Controller/HoverImages/EscapeOptionsButton_Hover",
-                "focusIndicatorOffset": { "x": -3, "y": 0 },
-                "pointSize": "$MediumLargeFontSize",
-                "textColor": "$LightButtonTextColor",
-                "text/style": "$StyleFEButtonText",
-                "hoveredFrame": 3,
-                "disabledFrame": 2,
-                "sound": "cursor_select",
+            },
+            "children": [
+                {
+                    "type": "AnimatedImageWidget", "name": "FullGlow",
+                    "fields": {
+                        "rect": { "x": -303, "y": 171 },
+                        "filename": "LogoAnimation/FullGlow_PC",
+                        "fps": 20,
+                    }
+                },
+                {
+                   "type": "AnimatedImageWidget", "name": "Logo",
+                   "fields": {
+                        "rect": { "x": -292, "y": 141 },
+                        "filename": "LogoAnimation/LogoAnimation",
+                        "fps": 20,
+                   }
+                },
+                {
+                   "type": "ImageWidget", "name": "ResurrectedText",
+                   "fields": {
+                        "rect": { "x": -239, "y": 473 },
+                        "filename": "LogoAnimation/ResurrectedText",
+                   }
+                },
+                {
+                   "type": "AnimatedImageWidget", "name": "BottomFlames",
+                   "fields": {
+                        "rect": { "x": -129, "y": 511 },
+                        "filename": "LogoAnimation/Logo_BottomFlame",
+                        "fps": 20,
+                   }
+                },
+            ]
+        },
+        {
+            "type": "TextBoxWidget", "name": "PauseText",
+            "fields": {
+                "anchor": { "x": 0.5 },
+                "rect": { "y": 628 },
+                "text": "@Paused",
+                "style": {
+                    "fontColor": "$PanelTitleColor",
+                    "pointSize": "$XExtraLargeFontSize",
+                    "alignment": { "h": "center", "v": "center" }
+                }
             }
         },
         {
-            "type": "ButtonWidget", "name": "Exit",
+            "type": "TableWidget", "name": "PauseTable",
             "fields": {
-                "rect": { "x": 564, "y": 878 },
-                "anchor": { "x": 0.5 },
-                "filename": "Controller/Panel/EscapeMenu/EscapeOptions_Button",
-                "focusIndicatorFilename": "Controller/HoverImages/EscapeOptionsButton_Hover",
-                "focusIndicatorOffset": { "x": -3, "y": 0 },
-                "textString": "@SaveAndExit",
-                "onClickMessage": "PausePanelMessage:ExitGame",
-                "pointSize": "$MediumLargeFontSize",
-                "textColor": "$LightButtonTextColor",
-                "text/style": "$StyleFEButtonText",
-                "hoveredFrame": 3,
-                "disabledFrame": 2,
-                "sound": "cursor_select",
+                "anchor": { "x": 0.5, "y": 0.5 },
+                "rect": { "x": -329, "y": -340 },
+                "columns": [ { "width": 658, "alignment": { "h": "center", "v": "center" } } ],
+                "rowHeight": 140,
+                "generateFocusLinks": true,
+            },
+            "children": [
+                {
+                    "type": "TableRowWidget", "name": "Row Options",
+                    "children": [
+                        {
+                            "type": "ButtonWidget", "name": "Settings",
+                            "fields": {
+                                "filename": "PauseMenu\\PauseButton",
+                                "hoveredFrame": 3,
+                                "textString": "@OptionsHD",
+                                "onClickMessage": "PanelManager:OpenPanel:SettingsPanel",
+                                "textColor": "$LightButtonTextColor",
+                                "text/style": "$StyleFEButtonText",
+                                "acceptsReturnKey": true,
+                                "focusOnMouseOver": true,
+                                "sound": "select",
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRowWidget", "name": "Row Save and Exit Game",
+                    "children": [
+                        {
+                            "type": "ButtonWidget", "name": "Exit",
+                            "fields": {
+                                "filename": "PauseMenu\\PauseButton",
+                                "hoveredFrame": 3,
+                                "textString": "@SaveAndExit",
+                                "pressLabelOffset": [ 0, 0 ],
+                                "onClickMessage": "PausePanelMessage:ExitGame",
+                                "textColor": "$LightButtonTextColor",
+                                "text/style": "$StyleFEButtonText",
+                                "acceptsReturnKey": true,
+                                "focusOnMouseOver": true,
+                                "sound": "cursor_select",
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "TableRowWidget", "name": "Row Return to Game",
+                    "children": [
+                        {
+                            "type": "ButtonWidget", "name": "ReturnToGame",
+                            "fields": {
+                                "filename": "PauseMenu\\PauseButton",
+                                "hoveredFrame": 3,
+                                "textString": "@ReturnToGame",
+                                "pressLabelOffset": [ 0, 0 ],
+                                "onClickMessage": "PausePanelMessage:Close",
+                                "textColor": "$LightButtonTextColor",
+                                "text/style": "$StyleFEButtonText",
+                                "acceptsReturnKey": true,
+                                "focusOnMouseOver": true,
+                                "sound": "select",
+                            }
+                        }
+                    ]
+                },
+            ]
+        },
+        {
+            "type": "ImageWidget", "name": "AgeDescriptorImage",
+            "fields": {
+                "rect": { "x": 40, "y": 80 },
+                "filename": "PauseMenu\\descriptor-18",
+            }
+        },
+        {
+            "type": "ImageWidget", "name": "ViolenceDescriptorImage",
+            "fields": {
+                "rect": { "x": 280, "y": 80 },
+                "filename": "PauseMenu\\descriptor-violence",
             }
         },
     ]

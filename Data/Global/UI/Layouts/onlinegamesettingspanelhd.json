@@ -1,5 +1,5 @@
 {
-    "basedOn": "OnlineGameSettingsPanelHD.json",
+    "basedOn": "SettingsPanelHD.json",
     "type": "SettingsPanel", "name": "OnlineGameSettingsPanel",
     "children": [
         {
@@ -18,25 +18,7 @@
                             "type": "TextBoxWidget", "name": "Title",
                         },
                         {
-                            "type": "ButtonLegendWidget", "name": "Legend",
-                            "fields": {
-                                "rect": { "x": 0, "y": 1661, "width": 1950, "height": 103 },
-                                "text": { "style": "$StyleButtonLegend" },
-                                "presets": [
-                                    {
-                                        "action": "back",
-                                        "description": "@Return",
-                                    },
-                                    {
-                                        "action": "option1",
-                                        "description": "@ControllerSettingsAcceptAll",
-                                    },
-                                    {
-                                        "action": "option2",
-                                        "description": "@ControllerSettingsDefault",
-                                    },
-                                ],
-                            },
+                            "type": "ButtonWidget", "name": "CloseButton",
                         },
                     ]
                 },
@@ -44,17 +26,37 @@
         },
         {
             "type": "ImageWidget", "name": "SettingsBackground",
-            "children": [
-                {
-                    "type": "ControllerCursorBoundsWidget", "name": "ControllerCursorBounds",
-                    "fields": {
-                        "fitToParent": true,
-                    },
-                },
-            ]
         },
         {
             "type": "TabBarWidget", "name": "OptionsTabs",
+            "fields": {
+                "tabSize": { "x": 255, "y": 121, },
+                "tabTextOffset": { "x": 3, "y": -4, },
+                "tabCount": 1,
+                "textStrings": [ "@GameCreationHD" ],
+                "tabMessages": [
+                    "SettingsPanelMessage:CheckChanges:OnlineGameOptionsPanel",
+                ],
+            },
+        },
+        {
+            "type": "TableWidget", "name": "ActionButtonsTable",
+            "children": [
+                {
+                    "type": "TableRowWidget", "name": "Row",
+                    "children": [
+                        {
+                            "type": "ButtonWidget", "name": "AcceptButton",
+                        },
+                        {
+                            "type": "ButtonWidget", "name": "DefaultButton",
+                        },
+                        {
+                            "type": "ButtonWidget", "name": "CancelButton",
+                        },
+                    ]
+                },
+            ]
         },
     ]
 }

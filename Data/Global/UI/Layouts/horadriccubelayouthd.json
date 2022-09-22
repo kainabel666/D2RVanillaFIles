@@ -1,53 +1,77 @@
 {
-    "basedOn": "HoradricCubeLayoutHD.json",
     "type": "HoradricCubePanel", "name": "HoradricCubeLayout",
     "fields": {
-        "rect": "$ConsoleLeftPanelRect",
-        "defaultWidget": "grid",
+        "priority": 10,
+        "rect": "$LeftPanelRect",
+        "anchor": "$LeftPanelAnchor",
     },
     "children": [
         {
             "type": "ClickCatcherWidget", "name": "click_catcher",
             "fields": {
-                "rect": [ 0, 0, 0, 0 ],
-                "fitToParent": true
-            }
+                "rect": "$PanelClickCatcherRect"
+            },
         },
         {
             "type": "ImageWidget", "name": "background",
             "fields": {
-                "filename": "Controller/Panel/HoradricCube/V2/HoradricCubeBG",
+                "filename": "PANEL\\Horadric_Cube\\HoradricCube_BG"
+            },
+        },
+        {
+            "type": "ImageWidget", "name": "LeftHinge",
+            "fields": {
+                "rect": "$LeftHingeRect",
+                "filename": "$LeftHingeSprite"
+            },
+        },
+        {
+            "type": "TextBoxWidget", "name": "title",
+            "fields": {
+                "rect": "$InGamePanelTitleRect",
+                "style": "$StyleTitleBlock",
+                "text": "@box",
             },
         },
         {
             "type": "ButtonWidget", "name": "convert",
             "fields": {
-                "rect": { "x": 589, "y": 882 },
+                "rect": { "x": 520, "y": 969 },
                 "filename": "PANEL\\Horadric_Cube\\TransmuteButton",
+                "tooltipString": "@strUiMenu2",
                 "hoveredFrame": 2,
-                "focusIndicatorFilename": "Controller/HoverImages/Transmute_Hover",
-                "focusIndicatorOffset": { "x": 0, "y": 0 },
-                "navigation": {
-                    "right": { "panelBoundary": true },
-                    "up": { "name": "grid" },
-                },
+                "onClickMessage": "HoradricCubePanelMessage:Convert",
+            },
+        },
+        {
+            "type": "ButtonWidget", "name": "close",
+            "fields": {
+                "rect": { "x": 1075, "y": 9 },
+                "filename": "PANEL\\closebtn_4x",
+                "hoveredFrame": 3,
+                "tooltipString": "@strClose",
+                "sound": "cursor_close_window_hd",
+                "onClickMessage": "HoradricCubePanelMessage:Close",
             },
         },
         {
             "type": "InventoryGridWidget", "name": "grid",
             "fields": {
-                "rect": { "x": 498, "y": 448 },
-                "gemSocketFilename": "PANEL/gemsocket",
-                "navigation": {
-                    "right": { "panelBoundary": true },
-                    "down": { "name": "convert" },
-                },
+                "rect": { "x": 431, "y": 534 },
+                "cellCount": { "x": 3, "y": 4 },
+                "cellSize": "$ItemCellSize",
+                "gemSocketFilename": "PANEL\\gemsocket",
             },
         },
         {
             "type": "AnimatedImageWidget", "name": "flourish",
             "fields": {
-                "rect": { "x":251, "y": 115 },
+                "rect": { "x": 180, "y": 204, "scale":2 },
+                "filename": "PANEL\\Horadric_Cube\\Flourish",
+                "blendMode": "black",
+                "fps": 14,
+                "playing": false,
+                "loop": false,
             },
         },
     ]

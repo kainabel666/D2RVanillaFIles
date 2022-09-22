@@ -1,11 +1,23 @@
 {
-    "basedOn": "ImbueItemsPanelHD.json",
     "type": "ImbueItemsPanel", "name": "ImbueItemsPanel",
     "fields": {
-        "rect": "$ConsoleLeftPanelRect",
-        "defaultWidget": "ItemDropRegion",
+        "rect": "$LeftPanelRect",
+        "anchor": "$LeftPanelAnchor",
     },
     "children": [
+        {
+            "type": "ClickCatcherWidget", "name": "LeftClickCatcher",
+            "fields": {
+                "rect": { "x": -236, "y": -205, "width": 740, "height": 2160 }
+            }
+        },
+        {
+            "type": "ImageWidget", "name": "LeftBorderImage",
+            "fields": {
+                "filename": "$LeftSideSprite",
+                "rect": "$LeftSideRectImbuePanel",
+            }
+        },
         {
             "type": "ClickCatcherWidget", "name": "ClickCatcher",
             "fields": {
@@ -15,45 +27,56 @@
         {
             "type": "ImageWidget", "name": "Background",
             "fields": {
-                "filename": "Controller/panel/ImbueItem/V2/ImbueItemBG",
+                "filename": "PANEL\\ImbueItem\\ImbueItem_BG",
             }
         },
         {
             "type": "ImageWidget", "name": "UpgradeModeBackground",
             "fields": {
-                "filename": "Controller/panel/ImbueItem/V2/ImbueItem_Center",
-                "rect": { "x": 265, "y": 268 }
+                "filename": "PANEL\\ImbueItem\\ImbueItem_Center",
+                "rect": { "x": 265, "y": 359 }
+            }
+        },
+        {
+            "type": "ImageWidget", "name": "LeftHinge",
+            "fields": {
+                "rect": "$LeftHingeRect",
+                "filename": "$LeftHingeSprite"
+            },
+        },
+        {
+            "type": "TextBoxWidget", "name": "Title",
+            "fields": {
+                "rect": "$InGamePanelTitleRect",
+                "text": "@Upgrade",
+                "style": "$StyleTitleBlock",
             }
         },
         {
             "type": "TextBoxWidget", "name": "TopText",
             "fields": {
-                "rect": { "x": 295, "y":295, "width": 700, "height": 133 },
+                "rect": { "x": 279, "y": 365, "width": 601, "height": 152 },
                 "style": {
                     "fontColor": "$DescriptionTextColor",
-                    "pointSize": "$MediumFontSize",
-                    "spacing": "$ReducedSpacing",
-                    "alignment": { "h": "center", "v": "center" }
+                    "alignment": { "h": "center", "v": "center" },
+                    "pointSize": "$MediumPanelFontSize",
+                    "options": { "newlineHandling": "standard", "lineWrap": true },
                 },
             }
         },
         {
             "type": "ImbueSocketWidget", "name": "ItemDropRegion",
             "fields": {
-                "rect": { "x": 490, "y": 491, "width": 312, "height": 425 },
-                "navigation": {
-                    "right": { "panelBoundary": true },
-                },
+                "rect": { "x": 411, "y": 570, "width": 335, "height": 444 },
+                "cellSize": "$ItemCellSize",
             }
         },
         {
             "type": "ButtonWidget", "name": "AcceptModeButton",
             "fields": {
-                "rect": { "x": 587, "y": 992 },
+                "rect": { "x": 520, "y": 1084 },
                 "filename": "PANEL\\Horadric_Cube\\TransmuteButton",
                 "hoveredFrame": 2,
-                "focusIndicatorFilename": "Controller/HoverImages/Transmute_Hover",
-                "focusIndicatorOffset": { "x": 0, "y": 0 },
                 "tooltipString": "@KeyAccept",
                 "onClickMessage": "ImbueItemPanelMessage:Confirm",
             }
@@ -63,9 +86,7 @@
             "fields": {
                 "filename": "FrontEnd/HD/Final/FrontEnd_ButtonMed",
                 "hoveredFrame": 3,
-                "focusIndicatorFilename": "Controller/HoverImages/FrontEndButtonMed",
-                "focusIndicatorOffset": { "x": 0, "y": 0 },
-                "rect": { "x": 410, "y": 989 },
+                "rect": { "x": 341, "y": 1084 },
                 "textString": "@Upgrade",
                 "pointSize": "$MediumLargeFontSize",
                 "textColor" : "$LightButtonTextColor",
@@ -73,5 +94,16 @@
                 "onClickMessage": "ImbueItemPanelMessage:Confirm",
             }
         },
+        {
+            "type": "ButtonWidget", "name": "Cancel",
+            "fields": {
+                "filename": "PANEL\\closebtn_4x",
+                "hoveredFrame": 3,
+                "rect": { "x": 1075, "y": 9 },
+                "tooltipString": "@strClose",
+                "sound": "cursor_close_window_hd",
+                "onClickMessage": "ImbueItemPanelMessage:Close"
+            }
+        }
     ]
 }
