@@ -1,67 +1,136 @@
 {
-    "basedOn": "CreateGamePanelHD.json",
     "type": "CreateGamePanel", "name": "CreateGamePanel",
     "fields": {
-        "defaultWidget": "GameNameInput",
+        "rect": "$RightLobbySubPanelRect",
+        "anchor": "$LobbyAnchor",
     },
     "children": [
         {
             "type": "ImageWidget", "name": "Background",
+            "fields": {
+                "filename": "Lobby\\CreateGame\\CreateGameBG"
+            },
         },
 
         {
             "type": "ClickCatcherWidget",
+            "fields": {
+                "rect": { "width": 1136, "height": 1224 }
+            }
         },
         {
             "type": "Widget", "name": "StandardOptionsContainer",
             "children": [
                 {
                     "type": "ImageWidget", "name": "Background",
+                    "fields": {
+                        "rect": { "x": 178, "y": 105 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_TextBoxes"
+                    },
                 },
                 {
                     "type": "TextBoxWidget", "name": "GameName",
+                    "fields": {
+                        "rect": { "x": 200, "y": 58, "width": 730, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@strGameName",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                     "children": [
-
                         {
                             "type": "InputTextBoxWidget", "name": "GameNameInput",
                             "fields": {
-                                "focusIndicatorFilename": "Controller/HoverImages/CreateTextInputS_Hover",
+                                "rect": { "x": 4, "y": 54, "width": 720, "height": 46 },
+                                "backgroundColor": "$FontColorTransparent",
+                                "maxStringLength": 15,
+                                "canInsertNewlines": false,
+                                "fontType": "12ptF",
+                                "fontStyle": "$StyleSettingsNumeric",
+                                "imeEnabled": true,
+                                "fontStyle": { "fontFace": "BlizzardGlobal" },
                                 "navigation": {
-                                    "down": { "name": "PasswordInput" },
-                                    "left": { "panelBoundary": true },
+                                    "next": { "name": "PasswordInput" },
                                 },
+                                "onUpdateMessage": "CreateGame:CacheGameName",
+                                "onReturnInputMessage": "CreateGame:CreateGame",
                             }
                         },
                     ]
                 },
                 {
                     "type": "TextBoxWidget", "name": "Password",
+                    "fields": {
+                        "rect": { "x": 200, "y": 196, "width": 730, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@strcreatepassword",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                     "children": [
                         {
                             "type": "MaskedInputTextBoxWidget", "name": "PasswordInput",
                             "fields": {
-                                "focusIndicatorFilename": "Controller/HoverImages/CreateTextInputS_Hover",
+                                "rect": { "x": 4, "y": 54, "width": 720, "height": 46 },
+                                "backgroundColor": "$FontColorTransparent",
+                                "maxStringLength": 15,
+                                "canInsertNewlines": false,
+                                "fontType": "12ptF",
+                                "fontStyle": "$StyleSettingsNumeric",
+                                "imeEnabled": true,
+                                "fontStyle": { "fontFace": "BlizzardGlobal" },
                                 "navigation": {
-                                    "up": { "name": "GameNameInput" },
-                                    "down": { "name": "DescriptionInput" },
-                                    "left": { "panelBoundary": true },
+                                    "next": { "name": "DescriptionInput" },
+                                    "previous": { "name": "GameNameInput" },
                                 },
+                                "onUpdateMessage": "CreateGame:CachePassword",
+                                "onReturnInputMessage": "CreateGame:CreateGame",
                             }
                         },
                     ]
                 },
                 {
                     "type": "TextBoxWidget", "name": "GameDescription",
+                    "fields": {
+                        "rect": { "x": 200, "y": 334, "width": 730, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@strGameDesc",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                     "children": [
                         {
                             "type": "InputTextBoxWidget", "name": "DescriptionInput",
                             "fields": {
-                                "focusIndicatorFilename": "Controller/HoverImages/CreateTextInputL_Hover",
-                                "navigation": {
-                                    "up": { "name": "PasswordInput" },
-                                    "down": { "name": "DifficultyNormal" },
-                                    "left": { "panelBoundary": true },
+                                "rect": { "x": 4, "y": 54, "width": 720, "height": 74 },
+                                "backgroundColor": { "r": 0, "g": 0, "b": 0, "a": 0 },
+                                "canInsertNewlines": false,
+                                "maxStringLength": 31,
+                                "fontType": "12ptF",
+                                "imeEnabled": true,
+                                "fontStyle": {
+                                    "fontFace": "BlizzardGlobal",
+                                    "fontColor": "$FontColorWhite",
+                                    "pointSize": "$SmallFontSize",
+                                    "options": { "lineWrap": true },
                                 },
+                                "navigation": {
+                                    "previous": { "name": "PasswordInput" },
+                                },
+                                "onUpdateMessage": "CreateGame:CacheDescription",
+                                "onReturnInputMessage": "CreateGame:CreateGame",
                             },
                         },
                     ]
@@ -70,91 +139,154 @@
                 {
                     "type": "ButtonWidget", "name": "DifficultyNormal",
                     "fields": {
-                        "focusIndicatorFilename": "Controller/HoverImages/DifficultySelect_Hover",
-                        "navigation": {
-                            "up": { "name": "DescriptionInput" },
-                            "down": { "name": "MaxPlayersInput" },
-                            "right": { "name": "DifficultyNightmare" },
-                            "left": { "panelBoundary": true },
-                        }
+                        "rect": { "x": 200, "y": 500 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_DifficultyBTN",
+                        "disabledFrame": 2,
+                        "hoveredFrame": 3,
+                        "textString": "@strCreateGameNormalText",
+                        "textColor": "$FontColorLightGold",
+                        "pointSize": "$SmallFontSize",
+                        "onClickMessage": "CreateGame:SetDifficulty:0",
+                        "acceptsReturnKey": true,
                     }
                 },
                 {
                     "type": "ButtonWidget", "name": "DifficultyNightmare",
                     "fields": {
-                        "focusIndicatorFilename": "Controller/HoverImages/DifficultySelect_Hover",
-                        "navigation": {
-                            "up": { "name": "DescriptionInput" },
-                            "down": { "name": "MaxPlayersInput" },
-                            "right": { "name": "DifficultyHell" },
-                            "left": { "name": "DifficultyNormal" }
-                        }
+                        "rect": { "x": 444, "y": 500 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_DifficultyBTN",
+                        "disabledFrame": 2,
+                        "hoveredFrame": 3,
+                        "textString": "@strCreateGameNightmareText",
+                        "textColor": "$FontColorLightGold",
+                        "pointSize": "$SmallFontSize",
+                        "onClickMessage": "CreateGame:SetDifficulty:1",
+                        "acceptsReturnKey": true,
                     }
                 },
                 {
                     "type": "ButtonWidget", "name": "DifficultyHell",
                     "fields": {
-                        "focusIndicatorFilename": "Controller/HoverImages/DifficultySelect_Hover",
-                        "navigation": {
-                            "up": { "name": "DescriptionInput" },
-                            "down": { "name": "MaxPlayersInput" },
-                            "left": { "name": "DifficultyNightmare" }
-                        }
+                        "rect": { "x": 687, "y": 500 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_DifficultyBTN",
+                        "disabledFrame": 2,
+                        "hoveredFrame": 3,
+                        "textString": "@strCreateGameHellText",
+                        "textColor": "$FontColorLightGold",
+                        "pointSize": "$SmallFontSize",
+                        "onClickMessage": "CreateGame:SetDifficulty:2",
+                        "acceptsReturnKey": true,
                     }
                 },
                 {
                     "type": "ImageWidget", "name": "DifficultySelector",
+                    "fields": {
+                        "rect": {"x": 200, "y": 500 },
+                        "filename": "Lobby\\CreateGame\\DifficultySelector"
+                    },
                 },
                 {
                     "type": "TextBoxWidget", "name": "MaxPlayers",
+                    "fields": {
+                        "rect": { "x": 200, "y": 623 },
+                        "fontType": "16pt",
+                        "text": "@OptionsMenuMaxPlayers",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                        },
+                    },
                 },
                 {
                     "type": "ImageWidget", "name": "MaxPlayerCounter",
+                    "fields": {
+                        "rect": { "x": 810, "y": 610 },
+                        "filename": "$SettingsNumericBackgroundImage",
+                    },
                 },
                 {
                     "type": "NumericInputTextBoxWidget", "name": "MaxPlayersInput",
                     "fields": {
-                        "focusIndicatorPadding": "$OptionsToggleFocusIndicatorPadding",
-                        "focusIndicatorOffset": "$OptionsNumInputFocusIndicatorOffset",
-                        "focusIndicatorFilename": "$OptionsNumInputFocusIndicatorFilename",
-                        "navigation": {
-                            "up": { "name": "DifficultyNormal" },
-                            "down": { "name": "MaxLevelDifferenceInput" },
-                            "left": { "panelBoundary": true },
+                        "rect": { "x": 837, "y": 613, "width": 60, "height": 56 },
+                        "backgroundColor": "$FontColorTransparent",
+                        "minValue": 1,
+                        "maxValue": 8,
+                        "fontType": "8ptE",
+                        "fontStyle": "$StyleSettingsNumeric",
+                        "scrollUpButton": "$SettingsNumericUpButtonFields",
+                        "scrollUpButton/rect": { "x": 63, "y": 1 },
+                        "scrollDownButton": "$SettingsNumericDownButtonFields",
+                        "scrollDownButton/rect": { "x": 63, "y": 29 },
+                        "tooltipString": "@OptionsMenuMaxPlayerCountTooltip",
+                        "tooltipStyle": {
+                            "fontStyle": {
+                                "options": { "newlineHandling": "standard" },
+                            },
                         },
+                        "onUpdateMessage": "CreateGame:CacheMaxPlayers",
                     }
                 },
                 {
               	    "type": "ImageWidget", "name": "MaxLevelCounter",
+                    "fields": {
+                        "rect": { "x": 810, "y": 699 },
+                        "filename": "$SettingsNumericBackgroundImage"
+                    },
                 },
                 {
                     "type": "TextBoxWidget", "name": "MaxLevelDifference",
+                    "fields":
+                    {
+                        "rect": { "x": 300, "y": 710, "width": 500, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@LobbyCreateGamePanelCharacterLevelDifference",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                 },
                 {
                     "type": "ToggleButtonWidget", "name": "CharacterDifferenceToggle",
                     "fields": {
-                        "focusIndicatorPadding": "$OptionsToggleFocusIndicatorPadding",
-                        "focusIndicatorFilename": "$OptionsToggleFocusIndicatorFilename",
-                        "focusIndicatorOffset": { "x": 0, "y": -3 },
-                        "navigation": {
-                            "up": { "name": "MaxPlayersInput" },
-                            "down": { "name": "AllowBnetFriendsJoinCheckbox" },
-                            "left": { "panelBoundary": true },
-                            "right": { "name": "MaxLevelDifferenceInput" },
-                        },
+                        "rect": { "x": 200, "y": 699 },
+                        "filename": "Lobby\\CreateGame\\CreateGame_AdvancedCheckbox",
+                        "untoggledFrame": 0,
+                        "untoggledPressedFrame": 1,
+                        "untoggledHoveredFrame": 3,
+                        "untoggledDisabledFrame": 2,
+                        "toggledFrame": 4,
+                        "toggledPressedFrame": 5,
+                        "toggledHoveredFrame": 6,
+                        "tooltipString": "@DisableCharacterLevelDiff",
+                        "acceptsReturnKey": true,
+                        "onClickMessage": "CreateGame:CacheMaxLevelDiffToggle"
                     },
                 },
                 {
                     "type": "NumericInputTextBoxWidget", "name": "MaxLevelDifferenceInput",
                     "fields": {
-                        "focusIndicatorPadding": "$OptionsToggleFocusIndicatorPadding",
-                        "focusIndicatorOffset": { "x": -8, "y": 0 },
-                        "focusIndicatorFilename": "$OptionsNumInputFocusIndicatorFilename",
-                        "navigation": {
-                            "up": { "name": "MaxPlayersInput" },
-                            "down": { "name": "AllowBnetFriendsJoinCheckbox" },
-                            "left": { "name": "CharacterDifferenceToggle" },
+                        "rect": { "x": 828, "y": 702, "width": 60, "height": 56 },
+                        "backgroundColor": "$FontColorTransparent",
+                        "disabledFontColor": "$FontColorGrey",
+                        "minValue": 0,
+                        "maxValue": 99,
+                        "fontType": "8ptE",
+                        "fontStyle": "$StyleSettingsNumeric",
+                        "scrollUpButton": "$SettingsNumericUpButtonFields",
+                        "scrollUpButton/rect": { "x": 72, "y": 1 },
+                        "scrollDownButton": "$SettingsNumericDownButtonFields",
+                        "scrollDownButton/rect": { "x": 72, "y": 29 },
+                        "tooltipString": "@OptionsMenuMaxLevelDifferenceTooltip",
+                        "tooltipStyle": {
+                            "fontStyle": {
+                                "options": { "newlineHandling": "standard" },
+                            },
                         },
+                        "onUpdateMessage": "CreateGame:CacheMaxLevelDiff",
                     }
                 },
             ]
@@ -162,48 +294,119 @@
         {
             "type": "ToggleButtonWidget", "name": "AllowBnetFriendsJoinCheckbox",
             "fields": {
-                "focusIndicatorPadding": "$OptionsToggleFocusIndicatorPadding",
-                "focusIndicatorFilename": "$OptionsToggleFocusIndicatorFilename",
-                "focusIndicatorOffset": { "x": 0, "y": -3 },
-                "navigation": {
-                    "up": { "name": "CharacterDifferenceToggle" },
-                    "down": { "name": "ItemSpacingCheckbox" },
-                    "left": { "panelBoundary": true },
-                },
+                "rect": { "x": 200, "y": 789 },
+                "filename": "Lobby\\CreateGame\\CreateGame_AdvancedCheckbox",
+                "untoggledFrame": 0,
+                "untoggledPressedFrame": 1,
+                "untoggledHoveredFrame": 3,
+                "untoggledDisabledFrame": 2,
+                "toggledFrame": 4,
+                "toggledPressedFrame": 5,
+                "toggledHoveredFrame": 6,
+                "tooltipString": "@CreateTooltipAllowBnetFriendsJoin",
+                "disabledTooltipString": "@CreateTooltipAllowBnetFriendsJoin",
+                "acceptsReturnKey": true,
+                "onClickMessage": "CreateGame:CacheFriendsListJoining"
             },
             "children": [
                 {
                     "type": "TextBoxWidget", "name": "ToggleDescriptionText",
+                    "fields": {
+                        "rect": { "x": 100, "y": 15, "width": 500, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@CreateSettingAllowBnetFriendsJoin",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                 }
             ]
         },
         {
             "type": "ToggleButtonWidget", "name": "ItemSpacingCheckbox",
             "fields": {
-                "focusIndicatorPadding": "$OptionsToggleFocusIndicatorPadding",
-                "focusIndicatorFilename": "$OptionsToggleFocusIndicatorFilename",
-                "focusIndicatorOffset": { "x": 0, "y": -3 },
-                "navigation": {
-                    "up": { "name": "AllowBnetFriendsJoinCheckbox" },
-                    "down": { "name": "CreateGameButton" },
-                    "left": { "panelBoundary": true },
-                },
+                "rect": { "x": 200, "y": 879 },
+                "filename": "Lobby\\CreateGame\\CreateGame_AdvancedCheckbox",
+                "untoggledFrame": 0,
+                "untoggledPressedFrame": 1,
+                "untoggledHoveredFrame": 3,
+                "untoggledDisabledFrame": 2,
+                "toggledFrame": 4,
+                "toggledPressedFrame": 5,
+                "toggledHoveredFrame": 6,
+                "tooltipString": "@CreateTooltipItemSpacing",
+                "disabledTooltipString": "@CreateTooltipItemSpacing",
+                "acceptsReturnKey": true,
+                "onClickMessage": "CreateGame:CacheItemSpacing"
             },
             "children": [
                 {
                     "type": "TextBoxWidget", "name": "ToggleDescriptionText",
+                    "fields": {
+                        "rect": { "x": 100, "y": 15, "width": 500, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@CreateSettingItemSpacing",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
+                }
+            ]
+        },
+        {
+            "type": "ToggleButtonWidget", "name": "DesecratedZonesCheckbox",
+            "fields": {
+                "rect": { "x": 200, "y": 969 },
+                "filename": "Lobby\\CreateGame\\CreateGame_AdvancedCheckbox",
+                "untoggledFrame": 0,
+                "untoggledPressedFrame": 1,
+                "untoggledHoveredFrame": 3,
+                "untoggledDisabledFrame": 2,
+                "toggledFrame": 4,
+                "toggledPressedFrame": 5,
+                "toggledHoveredFrame": 6,
+                "tooltipString": "@TerrorZonesEnabledTooltip",
+                "disabledTooltipString": "@TerrorZonesNotAvailable",
+                "acceptsReturnKey": true,
+                "onClickMessage": "CreateGame:CacheDesecratedZonesEnabled"
+            },
+            "children": [
+                {
+                    "type": "TextBoxWidget", "name": "ToggleDescriptionText",
+                    "fields": {
+                        "rect": { "x": 100, "y": 15, "width": 500, "height": 44 },
+                        "fontType": "16pt",
+                        "text": "@CreateGameSettingTerrorZonesEnabled",
+                        "style": {
+                            "fontColor": "$FontColorGoldYellow",
+                            "pointSize": "$MediumFontSize",
+                            "dropShadow": "$DefaultDropShadow",
+                            "alignment": { "v": "center" },
+                        },
+                    },
                 }
             ]
         },
         {
             "type": "ButtonWidget", "name": "CreateGameButton",
             "fields": {
-                "focusIndicatorFilename": "Controller/HoverImages/FrontEndButtonMed",
-                "navigation": {
-                    "up": { "name": "ItemSpacingCheckbox" },
-                    "down": { "panelBoundary": true },
-                    "left": { "panelBoundary": true },
-                }
+                "rect": { "x": 332, "y": 1068 },
+                "filename": "FrontEnd\\HD\\Final\\FrontEnd_ButtonMed",
+                "textString": "@LobbyCreateGame",
+                "onClickMessage": "CreateGame:CreateGame",
+                "fontType": "10ptE",
+                "pointSize": "$MediumLargeFontSize",
+                "textColor": "$LightButtonTextColor",
+                "hoveredFrame": 3,
+                "disabledFrame": 2,
+                "disabledTint": { "a": 1.0 },
+                "acceptsReturnKey": true,
             }
         },
     ]

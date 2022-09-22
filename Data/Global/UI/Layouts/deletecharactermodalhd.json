@@ -1,5 +1,5 @@
 {
-    "basedOn": "Controller/ConfirmationModalHD.json",
+    "basedOn": "ConfirmationModalHD.json",
     "type": "DeleteCharacterModal", "name": "DeleteCharacterModal",
     "children": [
         {
@@ -15,23 +15,13 @@
                     "type": "ButtonWidget", "name": "Confirm",
                     "fields": {
                         "textString": "@strdeletecharok"
-                    },
-                    "children": [
-                        {
-                            "type": "ButtonLegendWidget", "name": "ConfirmLegend",
-                        },
-                    ]
+                    }
                 },
                 {
                     "type": "ButtonWidget", "name": "Dismiss",
                     "fields": {
                         "textString": "@strdeletecharnot"
-                    },
-                    "children": [
-                        {
-                            "type": "ButtonLegendWidget", "name": "DismissLegend",
-                        },
-                    ]
+                    }
                 },
             ]
         },
